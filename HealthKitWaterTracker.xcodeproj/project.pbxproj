@@ -3,27 +3,53 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		6364B7EE25E4C08B0043698A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B7ED25E4C08B0043698A /* AppDelegate.swift */; };
 		6364B7F025E4C08B0043698A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B7EF25E4C08B0043698A /* SceneDelegate.swift */; };
-		6364B7F225E4C08B0043698A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B7F125E4C08B0043698A /* ViewController.swift */; };
-		6364B7F525E4C08B0043698A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6364B7F325E4C08B0043698A /* Main.storyboard */; };
 		6364B7F725E4C08C0043698A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6364B7F625E4C08C0043698A /* Assets.xcassets */; };
 		6364B7FA25E4C08C0043698A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6364B7F825E4C08C0043698A /* LaunchScreen.storyboard */; };
+		6364B80825E4C1700043698A /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B80725E4C1700043698A /* MainTabViewController.swift */; };
+		6364B80D25E4C1E20043698A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B80C25E4C1E20043698A /* SettingsViewController.swift */; };
+		6364B81125E4C23E0043698A /* WaterIntakeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B81025E4C23E0043698A /* WaterIntakeTableViewController.swift */; };
+		6364B81625E4C27C0043698A /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6364B81525E4C27C0043698A /* HealthKit.framework */; };
+		6364B81A25E4C3170043698A /* CareKitUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6364B81925E4C3170043698A /* CareKitUI */; };
+		6364B81D25E4C3310043698A /* WaterIntakeChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B81C25E4C3310043698A /* WaterIntakeChartViewController.swift */; };
+		6364B82025E4C3960043698A /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 6364B81F25E4C3960043698A /* Localizable.stringsdict */; };
+		6364B82425E4C3D40043698A /* HealthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B82325E4C3D40043698A /* HealthData.swift */; };
+		6364B82A25E4C4080043698A /* HealthDataTypeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B82925E4C4080043698A /* HealthDataTypeValue.swift */; };
+		6364B82E25E4C4290043698A /* DataTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B82D25E4C4290043698A /* DataTypeTableViewCell.swift */; };
+		6364B83125E4C44B0043698A /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B83025E4C44B0043698A /* ChartView.swift */; };
+		6364B83425E4C46C0043698A /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B83325E4C46C0043698A /* AppSettings.swift */; };
+		6364B83825E4C4A20043698A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B83725E4C4A20043698A /* UIView+Extension.swift */; };
+		6364B83D25E4C85E0043698A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B83C25E4C85E0043698A /* Network.swift */; };
+		6364B84025E4C8790043698A /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B83F25E4C8790043698A /* ServerResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6364B7EA25E4C08B0043698A /* HealthKitWaterTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthKitWaterTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6364B7ED25E4C08B0043698A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6364B7EF25E4C08B0043698A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6364B7F125E4C08B0043698A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6364B7F425E4C08B0043698A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6364B7F625E4C08C0043698A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6364B7F925E4C08C0043698A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6364B7FB25E4C08C0043698A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6364B80725E4C1700043698A /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
+		6364B80C25E4C1E20043698A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		6364B81025E4C23E0043698A /* WaterIntakeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterIntakeTableViewController.swift; sourceTree = "<group>"; };
+		6364B81325E4C27C0043698A /* HealthKitWaterTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HealthKitWaterTracker.entitlements; sourceTree = "<group>"; };
+		6364B81525E4C27C0043698A /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		6364B81C25E4C3310043698A /* WaterIntakeChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterIntakeChartViewController.swift; sourceTree = "<group>"; };
+		6364B81F25E4C3960043698A /* Localizable.stringsdict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
+		6364B82325E4C3D40043698A /* HealthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthData.swift; sourceTree = "<group>"; };
+		6364B82925E4C4080043698A /* HealthDataTypeValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataTypeValue.swift; sourceTree = "<group>"; };
+		6364B82D25E4C4290043698A /* DataTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeTableViewCell.swift; sourceTree = "<group>"; };
+		6364B83025E4C44B0043698A /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		6364B83325E4C46C0043698A /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		6364B83725E4C4A20043698A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		6364B83C25E4C85E0043698A /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		6364B83F25E4C8790043698A /* ServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6364B81A25E4C3170043698A /* CareKitUI in Frameworks */,
+				6364B81625E4C27C0043698A /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +70,7 @@
 			children = (
 				6364B7EC25E4C08B0043698A /* HealthKitWaterTracker */,
 				6364B7EB25E4C08B0043698A /* Products */,
+				6364B81425E4C27C0043698A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +85,99 @@
 		6364B7EC25E4C08B0043698A /* HealthKitWaterTracker */ = {
 			isa = PBXGroup;
 			children = (
+				6364B82825E4C3F50043698A /* Models */,
+				6364B82725E4C3EF0043698A /* Views */,
+				6364B80625E4C1610043698A /* View Controllers */,
+				6364B82225E4C3C40043698A /* Data */,
+				6364B84225E4C88D0043698A /* Network */,
+				6364B83625E4C4840043698A /* Utilities */,
+				6364B80225E4C0C20043698A /* Resources */,
+			);
+			path = HealthKitWaterTracker;
+			sourceTree = "<group>";
+		};
+		6364B80225E4C0C20043698A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				6364B7ED25E4C08B0043698A /* AppDelegate.swift */,
 				6364B7EF25E4C08B0043698A /* SceneDelegate.swift */,
-				6364B7F125E4C08B0043698A /* ViewController.swift */,
-				6364B7F325E4C08B0043698A /* Main.storyboard */,
 				6364B7F625E4C08C0043698A /* Assets.xcassets */,
 				6364B7F825E4C08C0043698A /* LaunchScreen.storyboard */,
 				6364B7FB25E4C08C0043698A /* Info.plist */,
+				6364B81F25E4C3960043698A /* Localizable.stringsdict */,
+				6364B81325E4C27C0043698A /* HealthKitWaterTracker.entitlements */,
 			);
-			path = HealthKitWaterTracker;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6364B80625E4C1610043698A /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6364B80725E4C1700043698A /* MainTabViewController.swift */,
+				6364B80B25E4C1CC0043698A /* Tabs */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		6364B80B25E4C1CC0043698A /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				6364B80C25E4C1E20043698A /* SettingsViewController.swift */,
+				6364B81025E4C23E0043698A /* WaterIntakeTableViewController.swift */,
+				6364B81C25E4C3310043698A /* WaterIntakeChartViewController.swift */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		6364B81425E4C27C0043698A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6364B81525E4C27C0043698A /* HealthKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6364B82225E4C3C40043698A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				6364B82325E4C3D40043698A /* HealthData.swift */,
+				6364B83325E4C46C0043698A /* AppSettings.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		6364B82725E4C3EF0043698A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6364B82D25E4C4290043698A /* DataTypeTableViewCell.swift */,
+				6364B83025E4C44B0043698A /* ChartView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6364B82825E4C3F50043698A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6364B82925E4C4080043698A /* HealthDataTypeValue.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6364B83625E4C4840043698A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				6364B83725E4C4A20043698A /* UIView+Extension.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		6364B84225E4C88D0043698A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				6364B83C25E4C85E0043698A /* Network.swift */,
+				6364B83F25E4C8790043698A /* ServerResponse.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +196,9 @@
 			dependencies = (
 			);
 			name = HealthKitWaterTracker;
+			packageProductDependencies = (
+				6364B81925E4C3170043698A /* CareKitUI */,
+			);
 			productName = HealthKitWaterTracker;
 			productReference = 6364B7EA25E4C08B0043698A /* HealthKitWaterTracker.app */;
 			productType = "com.apple.product-type.application";
@@ -110,6 +226,9 @@
 				Base,
 			);
 			mainGroup = 6364B7E125E4C08B0043698A;
+			packageReferences = (
+				6364B81825E4C3170043698A /* XCRemoteSwiftPackageReference "CareKit" */,
+			);
 			productRefGroup = 6364B7EB25E4C08B0043698A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,7 +245,7 @@
 			files = (
 				6364B7FA25E4C08C0043698A /* LaunchScreen.storyboard in Resources */,
 				6364B7F725E4C08C0043698A /* Assets.xcassets in Resources */,
-				6364B7F525E4C08B0043698A /* Main.storyboard in Resources */,
+				6364B82025E4C3960043698A /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,23 +256,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6364B7F225E4C08B0043698A /* ViewController.swift in Sources */,
+				6364B83D25E4C85E0043698A /* Network.swift in Sources */,
+				6364B81125E4C23E0043698A /* WaterIntakeTableViewController.swift in Sources */,
+				6364B82425E4C3D40043698A /* HealthData.swift in Sources */,
+				6364B82E25E4C4290043698A /* DataTypeTableViewCell.swift in Sources */,
+				6364B83125E4C44B0043698A /* ChartView.swift in Sources */,
+				6364B81D25E4C3310043698A /* WaterIntakeChartViewController.swift in Sources */,
+				6364B82A25E4C4080043698A /* HealthDataTypeValue.swift in Sources */,
+				6364B83825E4C4A20043698A /* UIView+Extension.swift in Sources */,
 				6364B7EE25E4C08B0043698A /* AppDelegate.swift in Sources */,
+				6364B83425E4C46C0043698A /* AppSettings.swift in Sources */,
 				6364B7F025E4C08B0043698A /* SceneDelegate.swift in Sources */,
+				6364B84025E4C8790043698A /* ServerResponse.swift in Sources */,
+				6364B80825E4C1700043698A /* MainTabViewController.swift in Sources */,
+				6364B80D25E4C1E20043698A /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		6364B7F325E4C08B0043698A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6364B7F425E4C08B0043698A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6364B7F825E4C08C0043698A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -286,9 +408,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HealthKitWaterTracker/Resources/HealthKitWaterTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3BQB6FYF6S;
-				INFOPLIST_FILE = HealthKitWaterTracker/Info.plist;
+				INFOPLIST_FILE = HealthKitWaterTracker/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -305,9 +428,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HealthKitWaterTracker/Resources/HealthKitWaterTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3BQB6FYF6S;
-				INFOPLIST_FILE = HealthKitWaterTracker/Info.plist;
+				INFOPLIST_FILE = HealthKitWaterTracker/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -341,6 +465,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6364B81825E4C3170043698A /* XCRemoteSwiftPackageReference "CareKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/carekit-apple/CareKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6364B81925E4C3170043698A /* CareKitUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6364B81825E4C3170043698A /* XCRemoteSwiftPackageReference "CareKit" */;
+			productName = CareKitUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6364B7E225E4C08B0043698A /* Project object */;
 }
