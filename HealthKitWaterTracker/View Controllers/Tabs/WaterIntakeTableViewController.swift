@@ -70,7 +70,7 @@ class WaterIntakeTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationItem.title = dataTypeName
+        navigationItem.title = tabBarItem.title
         
         if AppSettings.shared.healthIntegrationIsEnabled {
             requestAuthorizationAndQueryData()

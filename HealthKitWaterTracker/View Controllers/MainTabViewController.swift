@@ -44,9 +44,9 @@ class MainTabViewController: UITabBarController {
     private func createSettingsViewController() -> UIViewController {
         let viewController = SettingsViewController()
         
-        viewController.tabBarItem = UITabBarItem(title: "Welcome",
-                                                 image: UIImage(systemName: "house"),
-                                                 selectedImage: UIImage(systemName: "house.fill"))
+        viewController.tabBarItem = UITabBarItem(title: "Settings",
+                                                 image: UIImage(systemName: "gearshape"),
+                                                 selectedImage: UIImage(systemName: "gearshape.fill"))
         return viewController
     }
     
