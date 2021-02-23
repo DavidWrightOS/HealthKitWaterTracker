@@ -189,9 +189,7 @@ extension WaterIntakeChartViewController {
     private func setupViews() {
         navigationController?.navigationBar.prefersLargeTitles = true
         title = tabBarItem.title
-        view.backgroundColor = .systemBackground
-        
-        chartView.backgroundColor = .systemBackground
+        view.backgroundColor = .systemGroupedBackground
         
         view.addSubview(chartView)
         
