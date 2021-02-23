@@ -19,7 +19,7 @@ protocol HealthDataTableViewControllerDelegate: class {
 }
 
 /// A representation of health data related to mobility.
-class WeeklyWaterIntakeTableViewController: UITableViewController {
+class WaterIntakeTableViewController: UITableViewController {
     
     static let cellIdentifier = "DataTypeTableViewCell"
     
@@ -159,7 +159,7 @@ class WeeklyWaterIntakeTableViewController: UITableViewController {
 
 // MARK: - Add Data
 
-extension WeeklyWaterIntakeTableViewController {
+extension WaterIntakeTableViewController {
     
     private func presentAddDataAlert() {
         let title = dataTypeName
@@ -190,7 +190,7 @@ extension WeeklyWaterIntakeTableViewController {
 
 // MARK: - HealthQueryDataSource
 
-extension WeeklyWaterIntakeTableViewController: HealthQueryDataSource {
+extension WaterIntakeTableViewController: HealthQueryDataSource {
     
     func performQuery(completion: @escaping () -> Void) {
         
@@ -254,7 +254,7 @@ extension WeeklyWaterIntakeTableViewController: HealthQueryDataSource {
 
 // MARK: - UITableViewDataSource
 
-extension WeeklyWaterIntakeTableViewController {
+extension WaterIntakeTableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataValues.count
@@ -288,7 +288,7 @@ extension WeeklyWaterIntakeTableViewController {
 
 // MARK: - UITableViewDelegate
 
-extension WeeklyWaterIntakeTableViewController {
+extension WaterIntakeTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -298,7 +298,7 @@ extension WeeklyWaterIntakeTableViewController {
 
 // MARK: - HealthDataTableViewControllerDelegate
 
-extension WeeklyWaterIntakeTableViewController: HealthDataTableViewControllerDelegate {
+extension WaterIntakeTableViewController: HealthDataTableViewControllerDelegate {
     
     /// Handle a value corresponding to incoming HealthKit data.
     func didAddNewData(with value: Double) {
@@ -327,7 +327,7 @@ extension WeeklyWaterIntakeTableViewController: HealthDataTableViewControllerDel
 
 // MARK: - SettingsTracking
 
-extension WeeklyWaterIntakeTableViewController: SettingsTracking {
+extension WaterIntakeTableViewController: SettingsTracking {
     func healthIntegrationIsEnabledChanged() {
         if AppSettings.shared.healthIntegrationIsEnabled {
             requestAuthorizationAndQueryData()

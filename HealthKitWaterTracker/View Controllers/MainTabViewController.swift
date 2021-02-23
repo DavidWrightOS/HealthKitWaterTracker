@@ -50,7 +50,7 @@ class MainTabViewController: UITabBarController {
     }
     
     private func createWeeklyWaterIntakeTableViewController() -> UIViewController {
-        let viewController = WeeklyWaterIntakeTableViewController()
+        let viewController = WaterIntakeTableViewController()
         
         viewController.tabBarItem = UITabBarItem(title: "Water Data",
                                                  image: UIImage(systemName: "drop"),
