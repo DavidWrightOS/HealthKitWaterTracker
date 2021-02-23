@@ -21,8 +21,6 @@ protocol HealthDataTableViewControllerDelegate: class {
 /// A representation of health data related to mobility.
 class WaterIntakeTableViewController: UITableViewController {
     
-    static let cellIdentifier = "DataTypeTableViewCell"
-    
     // MARK: - Properties
     
     let calendar = Calendar.current
@@ -64,7 +62,7 @@ class WaterIntakeTableViewController: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Data", style: .plain, target: self, action: #selector(didTapRightBarButtonItem))
         title = tabBarItem.title
         
-        tableView.register(DataTypeTableViewCell.self, forCellReuseIdentifier: Self.cellIdentifier)
+        tableView.register(WaterIntakeTableViewCell.self, forCellReuseIdentifier: WaterIntakeTableViewCell.reuseIdentifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -261,8 +259,8 @@ extension WaterIntakeTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Self.cellIdentifier) as? DataTypeTableViewCell else {
-            return DataTypeTableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: WaterIntakeTableViewCell.reuseIdentifier) as? WaterIntakeTableViewCell else {
+            return WaterIntakeTableViewCell()
         }
         
         let dataValue = dataValues[indexPath.row]

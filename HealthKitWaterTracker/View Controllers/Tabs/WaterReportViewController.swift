@@ -11,8 +11,6 @@ import HealthKit
 /// A representation of health data related to mobility.
 class WaterReportViewController: UIViewController {
     
-    static let cellIdentifier = "DataTypeTableViewCell"
-    
     // MARK: - Properties
     
     let calendar = Calendar.current
@@ -183,7 +181,7 @@ extension WaterReportViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Data", style: .plain, target: self, action: #selector(didTapRightBarButtonItem))
         title = tabBarItem.title
         
-        tableView.register(DataTypeTableViewCell.self, forCellReuseIdentifier: Self.cellIdentifier)
+        tableView.register(WaterIntakeTableViewCell.self, forCellReuseIdentifier: WaterIntakeTableViewCell.reuseIdentifier)
         tableView.backgroundColor = .clear
         
         view.addSubview(chartView)
@@ -310,8 +308,8 @@ extension WaterReportViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Self.cellIdentifier) as? DataTypeTableViewCell else {
-            return DataTypeTableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: WaterIntakeTableViewCell.reuseIdentifier) as? WaterIntakeTableViewCell else {
+            return WaterIntakeTableViewCell()
         }
         
         let dataValue = dataValues[indexPath.row]

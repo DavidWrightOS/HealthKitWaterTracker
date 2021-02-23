@@ -20,7 +20,7 @@
 		6364B82025E4C3960043698A /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 6364B81F25E4C3960043698A /* Localizable.stringsdict */; };
 		6364B82425E4C3D40043698A /* HealthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B82325E4C3D40043698A /* HealthData.swift */; };
 		6364B82A25E4C4080043698A /* HealthDataTypeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B82925E4C4080043698A /* HealthDataTypeValue.swift */; };
-		6364B82E25E4C4290043698A /* DataTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B82D25E4C4290043698A /* DataTypeTableViewCell.swift */; };
+		6364B82E25E4C4290043698A /* WaterIntakeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B82D25E4C4290043698A /* WaterIntakeTableViewCell.swift */; };
 		6364B83125E4C44B0043698A /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B83025E4C44B0043698A /* ChartView.swift */; };
 		6364B83425E4C46C0043698A /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B83325E4C46C0043698A /* AppSettings.swift */; };
 		6364B83825E4C4A20043698A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B83725E4C4A20043698A /* UIView+Extension.swift */; };
@@ -45,7 +45,7 @@
 		6364B81F25E4C3960043698A /* Localizable.stringsdict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
 		6364B82325E4C3D40043698A /* HealthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthData.swift; sourceTree = "<group>"; };
 		6364B82925E4C4080043698A /* HealthDataTypeValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataTypeValue.swift; sourceTree = "<group>"; };
-		6364B82D25E4C4290043698A /* DataTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeTableViewCell.swift; sourceTree = "<group>"; };
+		6364B82D25E4C4290043698A /* WaterIntakeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterIntakeTableViewCell.swift; sourceTree = "<group>"; };
 		6364B83025E4C44B0043698A /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		6364B83325E4C46C0043698A /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		6364B83725E4C4A20043698A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 		6364B82725E4C3EF0043698A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6364B82D25E4C4290043698A /* DataTypeTableViewCell.swift */,
+				6364B82D25E4C4290043698A /* WaterIntakeTableViewCell.swift */,
 				6364B83025E4C44B0043698A /* ChartView.swift */,
 			);
 			path = Views;
@@ -262,7 +262,7 @@
 				6364B83D25E4C85E0043698A /* Network.swift in Sources */,
 				6364B81125E4C23E0043698A /* WaterIntakeTableViewController.swift in Sources */,
 				6364B82425E4C3D40043698A /* HealthData.swift in Sources */,
-				6364B82E25E4C4290043698A /* DataTypeTableViewCell.swift in Sources */,
+				6364B82E25E4C4290043698A /* WaterIntakeTableViewCell.swift in Sources */,
 				6364B83125E4C44B0043698A /* ChartView.swift in Sources */,
 				6364B81D25E4C3310043698A /* WaterIntakeChartViewController.swift in Sources */,
 				6364B82A25E4C4080043698A /* HealthDataTypeValue.swift in Sources */,
