@@ -63,6 +63,7 @@ class WaterIntakeTableViewController: UITableViewController {
         title = tabBarItem.title
         
         tableView.register(WaterIntakeTableViewCell.self, forCellReuseIdentifier: WaterIntakeTableViewCell.reuseIdentifier)
+        tableView.contentInset.top = 8
     }
     
     override func viewWillAppear(_ animated: Bool) {

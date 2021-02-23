@@ -14,6 +14,7 @@ class WaterIntakeTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .secondarySystemGroupedBackground
     }
     
     required init?(coder: NSCoder) {

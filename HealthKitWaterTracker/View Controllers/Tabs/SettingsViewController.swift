@@ -221,7 +221,7 @@ extension SettingsViewController {
         
         let containerView: UIView = {
             let containerView = UIView()
-            containerView.backgroundColor = .systemBackground
+            containerView.backgroundColor = .secondarySystemGroupedBackground
             containerView.translatesAutoresizingMaskIntoConstraints = false
             
             appleHealthIntegrationLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
