@@ -27,6 +27,7 @@
 		6364B83D25E4C85E0043698A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B83C25E4C85E0043698A /* Network.swift */; };
 		6364B84025E4C8790043698A /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B83F25E4C8790043698A /* ServerResponse.swift */; };
 		6364B84625E4CC440043698A /* WaterReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B84525E4CC440043698A /* WaterReportViewController.swift */; };
+		6364B84B25E4F7E70043698A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B84A25E4F7E70043698A /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		6364B83C25E4C85E0043698A /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		6364B83F25E4C8790043698A /* ServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
 		6364B84525E4CC440043698A /* WaterReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterReportViewController.swift; sourceTree = "<group>"; };
+		6364B84A25E4F7E70043698A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				6364B83725E4C4A20043698A /* UIView+Extension.swift */,
+				6364B84A25E4F7E70043698A /* UIColor+Extension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				6364B83125E4C44B0043698A /* ChartView.swift in Sources */,
 				6364B81D25E4C3310043698A /* WaterIntakeChartViewController.swift in Sources */,
 				6364B82A25E4C4080043698A /* HealthDataTypeValue.swift in Sources */,
+				6364B84B25E4F7E70043698A /* UIColor+Extension.swift in Sources */,
 				6364B83825E4C4A20043698A /* UIView+Extension.swift in Sources */,
 				6364B7EE25E4C08B0043698A /* AppDelegate.swift in Sources */,
 				6364B83425E4C46C0043698A /* AppSettings.swift in Sources */,
