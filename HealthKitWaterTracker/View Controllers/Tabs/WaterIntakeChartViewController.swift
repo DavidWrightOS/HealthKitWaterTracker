@@ -187,9 +187,11 @@ class WaterIntakeChartViewController: UIViewController {
 extension WaterIntakeChartViewController {
     
     private func setupViews() {
+        
+        configureColorScheme()
+        
         navigationController?.navigationBar.prefersLargeTitles = true
         title = tabBarItem.title
-        view.backgroundColor = .systemGroupedBackground
         
         view.addSubview(chartView)
         
@@ -202,6 +204,14 @@ extension WaterIntakeChartViewController {
         chartView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: verticalMargin).isActive = true
         chartView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: horizontalMargin).isActive = true
         chartView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -horizontalMargin).isActive = true
+    }
+    
+    private func configureColorScheme() {
+        view.backgroundColor = .backgroundColor
+        
+        navigationController?.navigationBar.tintColor = .actionColor
+        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.textColor]
+        navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
     }
 }
 

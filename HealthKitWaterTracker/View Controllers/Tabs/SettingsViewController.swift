@@ -58,6 +58,7 @@ class SettingsViewController: UIViewController {
         appleHealthIntegrationSwitch.isOn = appSettings.healthIntegrationIsEnabled
         
         title = tabBarItem.title
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         getHealthAuthorizationRequestStatus()
     }
@@ -191,7 +192,7 @@ extension SettingsViewController {
     
     private func configureViews() {
         
-        view.backgroundColor = .systemGroupedBackground
+        configureColorScheme()
         
         let inset: CGFloat = 20
         let padding: CGFloat = 12
@@ -210,10 +211,9 @@ extension SettingsViewController {
             imageView.image = image
             
             imageView.layer.borderWidth = 0.4
-            imageView.layer.borderColor = UIColor.opaqueSeparator.cgColor
+            imageView.layer.borderColor = UIColor.separator.cgColor
             imageView.layer.cornerRadius = 7
             imageView.layer.cornerCurve = .continuous
-            imageView.backgroundColor = .red
             imageView.layer.masksToBounds = true
             
             return imageView
@@ -221,7 +221,7 @@ extension SettingsViewController {
         
         let containerView: UIView = {
             let containerView = UIView()
-            containerView.backgroundColor = .secondarySystemGroupedBackground
+            containerView.backgroundColor = .secondaryBackgroundColor
             containerView.translatesAutoresizingMaskIntoConstraints = false
             
             appleHealthIntegrationLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
@@ -246,7 +246,7 @@ extension SettingsViewController {
         
         func makeSeparator() -> UIView {
             let separator = UIView()
-            separator.backgroundColor = .opaqueSeparator
+            separator.backgroundColor = .separator
             separator.translatesAutoresizingMaskIntoConstraints = false
 
             view.addSubview(separator)
@@ -275,6 +275,18 @@ extension SettingsViewController {
         descriptionLabel.topAnchor.constraint(equalTo: separator2.bottomAnchor, constant: padding).isActive = true
         descriptionLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: inset).isActive = true
         descriptionLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -inset).isActive = true
+    }
+    
+    private func configureColorScheme() {
+        view.backgroundColor = .backgroundColor
+        
+        navigationController?.navigationBar.tintColor = .actionColor
+        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.textColor]
+        navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
+        
+        appleHealthIntegrationSwitch.onTintColor = .switchOnTintColor
+        appleHealthIntegrationLabel.textColor = .textColor
+        descriptionLabel.textColor = .detailTextColor
     }
 }
 

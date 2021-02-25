@@ -58,6 +58,8 @@ class WaterIntakeTableViewController: UITableViewController {
         
         registerForhealthIntegrationIsEnabledChanges()
         
+        configureColorScheme()
+        
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Data", style: .plain, target: self, action: #selector(didTapRightBarButtonItem))
         title = tabBarItem.title
@@ -146,6 +148,14 @@ class WaterIntakeTableViewController: UITableViewController {
     
     private func removeEmptyDataView() {
         tableView.removeSplashScreen()
+    }
+    
+    private func configureColorScheme() {
+        view.backgroundColor = .backgroundColor
+        
+        navigationController?.navigationBar.tintColor = .actionColor
+        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.textColor]
+        navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
     }
     
     // MARK: - Selectors

@@ -15,8 +15,8 @@ class MainTabViewController: UITabBarController {
     init() {
         super.init(nibName: nil, bundle: nil)
         
-        view.backgroundColor = .systemBackground
         setUpTabViewController()
+        configureColorScheme()
     }
     
     required init?(coder: NSCoder) {
@@ -39,6 +39,21 @@ class MainTabViewController: UITabBarController {
         
         delegate = self
         selectedIndex = getLastViewedViewControllerIndex()
+    }
+    
+    private func configureColorScheme() {
+        view.backgroundColor = .backgroundColor
+        tabBar.barTintColor = .tabBarBackgroundColor
+        tabBar.tintColor = .tabBarItemColor
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.tabBarItemColor], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.tabBarSelectedItemColor], for: .selected)
+        
+        for item in tabBar.items ?? [] {
+            let image = item.image?.withTintColor(.tabBarItemColor, renderingMode: .alwaysOriginal)
+            item.image = image
+            let selectedImage = item.selectedImage?.withTintColor(.tabBarSelectedItemColor, renderingMode: .alwaysOriginal)
+            item.selectedImage = selectedImage
+        }
     }
     
     private func createSettingsViewController() -> UIViewController {
@@ -91,7 +106,9 @@ class MainTabViewController: UITabBarController {
     }
 }
 
+
 // MARK: - UITabBarControllerDelegate
+
 extension MainTabViewController: UITabBarControllerDelegate {
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         guard let index = tabBar.items?.firstIndex(of: item) else { return }

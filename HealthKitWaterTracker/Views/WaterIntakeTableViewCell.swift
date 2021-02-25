@@ -14,10 +14,18 @@ class WaterIntakeTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .secondarySystemGroupedBackground
+        
+        configureColorScheme()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func configureColorScheme() {
+        backgroundColor = .secondaryBackgroundColor
+        textLabel?.textColor = .textColor
+        detailTextLabel?.textColor = .detailTextColor
+    }
+}
 }

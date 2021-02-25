@@ -175,10 +175,13 @@ class WaterReportViewController: UIViewController {
 extension WaterReportViewController {
     
     private func setUpViews() {
-        view.backgroundColor = .systemGroupedBackground
+        
+        configureColorScheme()
+        
+        navigationController?.navigationBar.layoutMargins.left = 20
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Data", style: .plain, target: self, action: #selector(didTapRightBarButtonItem))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Data", style: .done, target: self, action: #selector(didTapRightBarButtonItem))
         title = tabBarItem.title
         
         tableView.register(WaterIntakeTableViewCell.self, forCellReuseIdentifier: WaterIntakeTableViewCell.reuseIdentifier)
@@ -200,6 +203,14 @@ extension WaterReportViewController {
         tableView.topAnchor.constraint(equalTo: chartView.bottomAnchor, constant: verticalMargin).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+    }
+    
+    private func configureColorScheme() {
+        view.backgroundColor = .backgroundColor
+        
+        navigationController?.navigationBar.tintColor = .actionColor
+        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.textColor]
+        navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
     }
 }
 
