@@ -35,3 +35,16 @@ extension UIColor {
     static var actionColor: UIColor { waterColorScheme ? .customTeal : .systemBlue }
     static var switchOnTintColor: UIColor { waterColorScheme ? .customTeal : .systemGreen }
 }
+
+
+// MARK: - UIViewController Theme Configuration
+
+extension UIViewController {
+    @objc func configureColorScheme() {
+        view.backgroundColor = .backgroundColor
+        
+        navigationController?.navigationBar.tintColor = .actionColor
+        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.textColor]
+        navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
+    }
+}

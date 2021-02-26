@@ -54,12 +54,8 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureViews()
+        setUpViews()
         appleHealthIntegrationSwitch.isOn = appSettings.healthIntegrationIsEnabled
-        
-        title = tabBarItem.title
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
         getHealthAuthorizationRequestStatus()
     }
     
@@ -190,7 +186,9 @@ class SettingsViewController: UIViewController {
 
 extension SettingsViewController {
     
-    private func configureViews() {
+    private func setUpViews() {
+        title = tabBarItem.title
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         configureColorScheme()
         
@@ -277,12 +275,8 @@ extension SettingsViewController {
         descriptionLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -inset).isActive = true
     }
     
-    private func configureColorScheme() {
-        view.backgroundColor = .backgroundColor
-        
-        navigationController?.navigationBar.tintColor = .actionColor
-        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.textColor]
-        navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
+    override func configureColorScheme() {
+        super.configureColorScheme()
         
         appleHealthIntegrationSwitch.onTintColor = .switchOnTintColor
         appleHealthIntegrationLabel.textColor = .textColor

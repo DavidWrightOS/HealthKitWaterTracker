@@ -41,8 +41,9 @@ class MainTabViewController: UITabBarController {
         selectedIndex = getLastViewedViewControllerIndex()
     }
     
-    private func configureColorScheme() {
-        view.backgroundColor = .backgroundColor
+    override func configureColorScheme() {
+        super.configureColorScheme()
+        
         tabBar.barTintColor = .tabBarBackgroundColor
         tabBar.tintColor = .tabBarItemColor
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.tabBarItemColor], for: .normal)

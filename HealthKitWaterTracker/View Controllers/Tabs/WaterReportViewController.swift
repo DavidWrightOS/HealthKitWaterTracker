@@ -50,7 +50,6 @@ class WaterReportViewController: UIViewController {
         super.viewDidLoad()
         
         registerForhealthIntegrationIsEnabledChanges()
-        
         setUpViews()
     }
     
@@ -176,10 +175,7 @@ extension WaterReportViewController {
     
     private func setUpViews() {
         
-        configureColorScheme()
-        
         navigationController?.navigationBar.layoutMargins.left = 20
-        
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Data", style: .done, target: self, action: #selector(didTapRightBarButtonItem))
         title = tabBarItem.title
@@ -203,14 +199,14 @@ extension WaterReportViewController {
         tableView.topAnchor.constraint(equalTo: chartView.bottomAnchor, constant: verticalMargin).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        
+        configureColorScheme()
     }
     
-    private func configureColorScheme() {
-        view.backgroundColor = .backgroundColor
+    override func configureColorScheme() {
+        super.configureColorScheme()
         
-        navigationController?.navigationBar.tintColor = .actionColor
-        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.textColor]
-        navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
+        chartView.applyCurrentColorScheme()
     }
 }
 

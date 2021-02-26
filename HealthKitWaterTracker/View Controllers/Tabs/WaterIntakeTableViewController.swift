@@ -57,15 +57,7 @@ class WaterIntakeTableViewController: UITableViewController {
         super.viewDidLoad()
         
         registerForhealthIntegrationIsEnabledChanges()
-        
-        configureColorScheme()
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Data", style: .plain, target: self, action: #selector(didTapRightBarButtonItem))
-        title = tabBarItem.title
-        
-        tableView.register(WaterIntakeTableViewCell.self, forCellReuseIdentifier: WaterIntakeTableViewCell.reuseIdentifier)
-        tableView.contentInset.top = 8
+        setUpViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -148,14 +140,6 @@ class WaterIntakeTableViewController: UITableViewController {
     
     private func removeEmptyDataView() {
         tableView.removeSplashScreen()
-    }
-    
-    private func configureColorScheme() {
-        view.backgroundColor = .backgroundColor
-        
-        navigationController?.navigationBar.tintColor = .actionColor
-        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.textColor]
-        navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
     }
     
     // MARK: - Selectors
@@ -330,6 +314,23 @@ extension WaterIntakeTableViewController: HealthDataTableViewControllerDelegate 
                 NSLog("Error: Could not save new sample.", quantitySample)
             }
         }
+    }
+}
+
+
+// MARK: - SetUp Views
+
+extension WaterIntakeTableViewController {
+    private func setUpViews() {
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Data", style: .plain, target: self, action: #selector(didTapRightBarButtonItem))
+        title = tabBarItem.title
+        
+        tableView.register(WaterIntakeTableViewCell.self, forCellReuseIdentifier: WaterIntakeTableViewCell.reuseIdentifier)
+        tableView.contentInset.top = 8
+        
+        configureColorScheme()
     }
 }
 

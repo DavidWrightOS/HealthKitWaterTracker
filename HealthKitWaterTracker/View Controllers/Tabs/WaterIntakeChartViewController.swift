@@ -36,7 +36,7 @@ class WaterIntakeChartViewController: UIViewController {
         super.viewDidLoad()
         
         registerForhealthIntegrationIsEnabledChanges()
-        setupViews()
+        setUpViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -186,9 +186,7 @@ class WaterIntakeChartViewController: UIViewController {
 
 extension WaterIntakeChartViewController {
     
-    private func setupViews() {
-        
-        configureColorScheme()
+    private func setUpViews() {
         
         navigationController?.navigationBar.prefersLargeTitles = true
         title = tabBarItem.title
@@ -204,14 +202,14 @@ extension WaterIntakeChartViewController {
         chartView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: verticalMargin).isActive = true
         chartView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: horizontalMargin).isActive = true
         chartView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -horizontalMargin).isActive = true
+        
+        configureColorScheme()
     }
     
-    private func configureColorScheme() {
-        view.backgroundColor = .backgroundColor
+    override func configureColorScheme() {
+        super.configureColorScheme()
         
-        navigationController?.navigationBar.tintColor = .actionColor
-        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.textColor]
-        navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
+        chartView.applyCurrentColorScheme()
     }
 }
 
