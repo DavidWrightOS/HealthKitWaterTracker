@@ -37,12 +37,20 @@ extension UIColor {
 }
 
 
+// MARK: - UIBarStyle Theme Configuration
+
+extension UIBarStyle {
+    static var currentTheme: UIBarStyle { UIColor.waterColorScheme ? .black : .default }
+}
+
+
 // MARK: - UIViewController Theme Configuration
 
 extension UIViewController {
     @objc func configureColorScheme() {
         view.backgroundColor = .backgroundColor
         
+        navigationController?.navigationBar.barStyle = UIBarStyle.currentTheme
         navigationController?.navigationBar.tintColor = .actionColor
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.textColor]
         navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
