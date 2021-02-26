@@ -49,6 +49,7 @@ class ChartView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        tintColor = .actionColor
         setupView()
     }
 
@@ -84,9 +85,7 @@ class ChartView: UIView {
         // Update graphView
         let horizontalAxisMarkers = delegate?.chartHorizontalAxisMarkers ?? Array(repeating: "", count: values.count)
         chartView.graphView.horizontalAxisMarkers = horizontalAxisMarkers
-        chartView.tintColor = tintColor
-        applyDefaultConfiguration()
-//        applyAlternateColorStyle()
+        applyCurrentColorScheme()
         
         // Update graphView dataSeries
         let unitTitle = delegate?.chartUnitTitle ?? ""
@@ -107,9 +106,19 @@ class ChartView: UIView {
 // MARK: - Chart View Style
 
 extension ChartView {
+    func applyCurrentColorScheme() {
+        if UIColor.waterColorScheme {
+            applyAlternateColorStyle()
+        } else {
+            applyDefaultConfiguration()
+        }
+    }
+    
     /// Apply standard graph configuration to set axes and style in a default configuration.
     private func applyDefaultConfiguration() {
-        chartView.headerView.detailLabel.textColor = .secondaryLabel
+        chartView.customStyle = nil
+        chartView.tintColor = tintColor
+        chartView.headerView.detailLabel.textColor = .detailTextColor
         chartView.graphView.numberFormatter = numberFormatter
         chartView.graphView.yMinimum = 0
     }
@@ -117,8 +126,8 @@ extension ChartView {
     /// Apply alternate color configuration to set axes and style in a custom configuration.
     private func applyAlternateColorStyle() {
         chartView.customStyle = CustomStyle()
-        chartView.tintColor = #colorLiteral(red: 0.2941176471, green: 0.5411764706, blue: 0.6117647059, alpha: 1)
-        chartView.headerView.detailLabel.textColor = #colorLiteral(red: 0.5305851102, green: 0.5456260443, blue: 0.5923916101, alpha: 1)
+        chartView.tintColor = tintColor
+        chartView.headerView.detailLabel.textColor = .detailTextColor
         chartView.graphView.numberFormatter = numberFormatter
         chartView.graphView.yMinimum = 0
     }
@@ -155,10 +164,11 @@ extension ChartView {
     /// A styler using a custom color configuration
     struct CustomStyle: OCKStyler {
         var color: OCKColorStyler { CustomColors() }
+        var appearance: OCKAppearanceStyler { NoShadowAppearanceStyle() }
     }
     
     struct CustomColors: OCKColorStyler {
-        var secondaryCustomGroupedBackground: UIColor { #colorLiteral(red: 0.2117647059, green: 0.2431372549, blue: 0.337254902, alpha: 1) } // chart background color
-        var label: UIColor { #colorLiteral(red: 0.8470588235, green: 0.8470588235, blue: 0.8470588235, alpha: 1) } // chart title and horizontal axis label color
+        var secondaryCustomGroupedBackground: UIColor { .backgroundColor } // chart background color
+        var label: UIColor { .textColor } // chart title and horizontal axis label color
     }
 }
