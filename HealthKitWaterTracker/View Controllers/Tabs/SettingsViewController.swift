@@ -23,30 +23,29 @@ class SettingsViewController: UIViewController {
     
     private let appSettings = AppSettings.shared
     
+    private let settings = [
+        // Section 0
+        [
+            SettingModel(displayName: "Apple Health Integration",
+                    getValue: { () in AppSettings.shared.healthIntegrationIsEnabled },
+                    setValue: { (newValue: Bool) in AppSettings.shared.healthIntegrationIsEnabled = newValue })
+        ],
+        // Section 1
+        [
+            SettingModel(displayName: "Blue Color Theme",
+                    getValue: { () in AppSettings.shared.waterColorScheme },
+                    setValue: { (newValue: Bool) in AppSettings.shared.waterColorScheme = newValue })
+        ]
+    ]
+    
     // MARK: - UI Components
     
-    private let appleHealthIntegrationLabel: UILabel = {
-        let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .body)
-        label.text = "Apple Health Integration"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private let appleHealthIntegrationSwitch: UISwitch = {
-        let healthSwitch = UISwitch()
-        healthSwitch.translatesAutoresizingMaskIntoConstraints = false
-        healthSwitch.addTarget(self, action: #selector(appleHealthIntegrationSwitchDidChange), for: .valueChanged)
-        return healthSwitch
-    }()
-    
-    lazy var descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .preferredFont(forTextStyle: .caption1)
-        label.numberOfLines = 0
-        label.adjustsFontForContentSizeCategory = true
-        return label
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.dataSource = self
+        tableView.delegate = self
+        return tableView
     }()
     
     // MARK: - Lifecycle
@@ -55,7 +54,8 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         setUpViews()
-        appleHealthIntegrationSwitch.isOn = appSettings.healthIntegrationIsEnabled
+        tableView.reloadData()
+        
         getHealthAuthorizationRequestStatus()
     }
     
@@ -82,38 +82,21 @@ class SettingsViewController: UIViewController {
             return
         }
         
-        healthStore.getRequestStatusForAuthorization(toShare: shareTypes, read: readTypes) { (authorizationRequestStatus, error) in
-            
-            var status: String = ""
-            
+        healthStore.getRequestStatusForAuthorization(toShare: shareTypes, read: readTypes) { authorizationRequestStatus, error in
             if let error = error {
-                status = "HealthKit Authorization Error: \(error.localizedDescription)"
-                self.turnOffAppleHealthIntegration()
-                
-            } else {
-                switch authorizationRequestStatus {
-                case .shouldRequest:
-                    self.hasRequestedHealthData = false
-                    status = "The application has not yet requested authorization for all of the specified data types."
-                    if self.appSettings.healthIntegrationIsEnabled {
-                        self.requestHealthAuthorization()
-                    }
-                case .unknown:
-                    status = "The authorization request status could not be determined because an error occurred."
-                case .unnecessary:
-                    self.hasRequestedHealthData = true
-                    status = "The application has already requested authorization for the specified data types. "
-                    status += self.createAuthorizationStatusDescription(for: self.shareTypes)
-                default:
-                    break
-                }
+                NSLog("HealthKit Request Status for Authorization Error: \(error.localizedDescription)")
             }
             
-            print(status)
-            
-            // Results come back on a background thread. Dispatch UI updates to the main thread.
-            DispatchQueue.main.async {
-                self.descriptionLabel.text = status
+            switch authorizationRequestStatus {
+            case .shouldRequest:
+                self.hasRequestedHealthData = false
+                if self.appSettings.healthIntegrationIsEnabled {
+                    self.requestHealthAuthorization()
+                }
+            case .unnecessary:
+                self.hasRequestedHealthData = true
+            default:
+                break
             }
         }
     }
@@ -127,37 +110,15 @@ class SettingsViewController: UIViewController {
             return
         }
         
-        healthStore.requestAuthorization(toShare: shareTypes, read: readTypes) { (success, error) in
-            
-            var status: String = ""
-            
+        healthStore.requestAuthorization(toShare: shareTypes, read: readTypes) { success, error in
             if let error = error {
-                status = "HealthKit Authorization Error: \(error.localizedDescription)"
-                self.turnOffAppleHealthIntegration()
-                
-            } else {
-                if success {
-                    if self.hasRequestedHealthData {
-                        status = "You've already requested access to health data. "
-                    } else {
-                        status = "HealthKit authorization request was successful! "
-                    }
-                    
-                    status += self.createAuthorizationStatusDescription(for: self.shareTypes)
-                    
-                    self.hasRequestedHealthData = true
-                    
-                } else {
-                    status = "HealthKit authorization did not complete successfully."
-                    self.turnOffAppleHealthIntegration()
-                }
+                NSLog("Error requesting HealthKit authorization: \(error.localizedDescription)")
             }
             
-            print(status)
-            
-            // Results come back on a background thread. Dispatch UI updates to the main thread.
-            DispatchQueue.main.async {
-                self.descriptionLabel.text = status
+            if success {
+                self.hasRequestedHealthData = true
+            } else {
+                self.turnOffAppleHealthIntegration()
             }
         }
     }
@@ -175,8 +136,11 @@ class SettingsViewController: UIViewController {
     
     private func turnOffAppleHealthIntegration() {
         DispatchQueue.main.async {
-            self.appleHealthIntegrationSwitch.isOn = false
             self.appSettings.healthIntegrationIsEnabled = false
+            
+            guard let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? SettingsCell else { return }
+            
+            cell.switchControl.setOn(false, animated: true)
         }
     }
 }
@@ -190,146 +154,58 @@ extension SettingsViewController {
         title = tabBarItem.title
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        tableView.register(SettingsCell.self, forCellReuseIdentifier: SettingsCell.reuseIdentifier)
+        tableView.contentInset.top = 8
+        
+        view.addSubview(tableView)
+        
+        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        
         configureColorScheme()
-        
-        let inset: CGFloat = 20
-        let padding: CGFloat = 12
-        
-        let imageView: UIImageView = {
-            let imageView = UIImageView()
-            
-            imageView.contentMode = .scaleAspectFit
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.heightAnchor.constraint(equalToConstant: 32).isActive = true
-            imageView.widthAnchor.constraint(equalToConstant: 32).isActive = true
-            imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
-            imageView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-            imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-            let image = UIImage(named: "Icon - Apple Health")
-            imageView.image = image
-            
-            imageView.layer.borderWidth = 0.4
-            imageView.layer.borderColor = UIColor.separator.cgColor
-            imageView.layer.cornerRadius = 7
-            imageView.layer.cornerCurve = .continuous
-            imageView.layer.masksToBounds = true
-            
-            return imageView
-        }()
-        
-        let containerView: UIView = {
-            let containerView = UIView()
-            containerView.backgroundColor = .secondaryBackgroundColor
-            containerView.translatesAutoresizingMaskIntoConstraints = false
-            
-            appleHealthIntegrationLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
-            appleHealthIntegrationSwitch.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-            
-            let stackView = UIStackView(arrangedSubviews: [imageView, appleHealthIntegrationLabel, appleHealthIntegrationSwitch])
-            stackView.axis = .horizontal
-            stackView.alignment = .center
-            stackView.distribution = .fill
-            stackView.spacing = padding
-            stackView.translatesAutoresizingMaskIntoConstraints = false
-            
-            containerView.addSubview(stackView)
-            
-            stackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 8).isActive = true
-            stackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -8).isActive = true
-            stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: inset).isActive = true
-            stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -inset).isActive = true
-            
-            return containerView
-        }()
-        
-        func makeSeparator() -> UIView {
-            let separator = UIView()
-            separator.backgroundColor = .separator
-            separator.translatesAutoresizingMaskIntoConstraints = false
-
-            view.addSubview(separator)
-            
-            separator.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-            separator.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-            separator.heightAnchor.constraint(equalToConstant: 0.3).isActive = true
-            
-            return separator
-        }
-        
-        let separator1 = makeSeparator()
-        let separator2 = makeSeparator()
-        
-        view.addSubview(containerView)
-        view.addSubview(descriptionLabel)
-        
-        separator1.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60).isActive = true
-        
-        containerView.topAnchor.constraint(equalTo: separator1.bottomAnchor).isActive = true
-        containerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        containerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        
-        separator2.topAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
-        
-        descriptionLabel.topAnchor.constraint(equalTo: separator2.bottomAnchor, constant: padding).isActive = true
-        descriptionLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: inset).isActive = true
-        descriptionLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -inset).isActive = true
-    }
-    
-    override func configureColorScheme() {
-        super.configureColorScheme()
-        
-        appleHealthIntegrationSwitch.onTintColor = .switchOnTintColor
-        appleHealthIntegrationLabel.textColor = .textColor
-        descriptionLabel.textColor = .detailTextColor
     }
 }
 
 
-// MARK: - Authorization Status Description
+// MARK: - UITableViewDataSource
 
-extension SettingsViewController {
+extension SettingsViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        settings.count
+    }
     
-    private func createAuthorizationStatusDescription(for types: Set<HKObjectType>) -> String {
-        var dictionary = [HKAuthorizationStatus: Int]()
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        settings[section].count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: SettingsCell.reuseIdentifier) as? SettingsCell ?? SettingsCell()
         
-        for type in types {
-            let status = healthStore.authorizationStatus(for: type)
-            
-            if let existingValue = dictionary[status] {
-                dictionary[status] = existingValue + 1
-            } else {
-                dictionary[status] = 1
-            }
+        cell.setting = settings[indexPath.section][indexPath.row]
+        
+        return cell
+    }
+}
+
+
+// MARK: - UITableViewDelegate
+
+extension SettingsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0: return "App Integrations".uppercased()
+        case 1: return "Appearance".uppercased()
+        default: return nil
         }
-        
-        var descriptionArray: [String] = []
-        
-        if let numberOfAuthorizedTypes = dictionary[.sharingAuthorized] {
-            let format = NSLocalizedString("AUTHORIZED_NUMBER_OF_TYPES", comment: "")
-            let formattedString = String(format: format, locale: .current, arguments: [numberOfAuthorizedTypes])
-            
-            descriptionArray.append(formattedString)
+    }
+    
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        switch section {
+        case 0: return "Turn on Apple Health Integration to sync water intake data with other apps."
+        default: return nil
         }
-        if let numberOfDeniedTypes = dictionary[.sharingDenied] {
-            let format = NSLocalizedString("DENIED_NUMBER_OF_TYPES", comment: "")
-            let formattedString = String(format: format, locale: .current, arguments: [numberOfDeniedTypes])
-            
-            descriptionArray.append(formattedString)
-        }
-        if let numberOfUndeterminedTypes = dictionary[.notDetermined] {
-            let format = NSLocalizedString("UNDETERMINED_NUMBER_OF_TYPES", comment: "")
-            let formattedString = String(format: format, locale: .current, arguments: [numberOfUndeterminedTypes])
-            
-            descriptionArray.append(formattedString)
-        }
-        
-        // Format the sentence for grammar if there are multiple clauses.
-        if let lastDescription = descriptionArray.last, descriptionArray.count > 1 {
-            descriptionArray[descriptionArray.count - 1] = "and \(lastDescription)"
-        }
-        
-        let description = "Sharing is " + descriptionArray.joined(separator: ", ") + "."
-        
-        return description
     }
 }
