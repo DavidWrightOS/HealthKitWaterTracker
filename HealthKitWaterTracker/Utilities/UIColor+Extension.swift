@@ -21,7 +21,7 @@ extension UIColor {
 // MARK: - Dynamic Colors
 
 extension UIColor {
-    static let waterColorScheme: Bool = true
+    static var waterColorScheme: Bool { AppSettings.shared.blueColorThemeIsEnabled }
     
     static var tabBarItemColor: UIColor { waterColorScheme ? .detailTextColor : .systemGray }
     static var tabBarSelectedItemColor: UIColor { .actionColor }
@@ -34,6 +34,7 @@ extension UIColor {
     static var detailTextColor: UIColor { waterColorScheme ? .customWhiteSecondary : .secondaryLabel }
     static var actionColor: UIColor { waterColorScheme ? .customTeal : .systemBlue }
     static var switchOnTintColor: UIColor { waterColorScheme ? .customTeal : .systemGreen }
+    static var switchThumbColor: UIColor { waterColorScheme ? customWhite : .white }
 }
 
 
@@ -54,5 +55,6 @@ extension UIViewController {
         navigationController?.navigationBar.tintColor = .actionColor
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.textColor]
         navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
 }
