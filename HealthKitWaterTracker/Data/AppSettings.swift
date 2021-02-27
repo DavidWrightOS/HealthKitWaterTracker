@@ -9,6 +9,7 @@ import Foundation
 
 @objc protocol SettingsTracking {
     @objc func healthIntegrationIsEnabledChanged()
+    @objc func blueColorThemeIsEnabledChanged()
 }
 
 extension SettingsTracking {
@@ -16,6 +17,13 @@ extension SettingsTracking {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(healthIntegrationIsEnabledChanged),
                                                name: .healthIntegrationIsEnabledChanged,
+                                               object: nil)
+    }
+    
+    func registerForBlueColorThemeIsEnabledChanges() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(blueColorThemeIsEnabledChanged),
+                                               name: .blueColorThemeIsEnabledChanged,
                                                object: nil)
     }
 }
@@ -37,10 +45,22 @@ class AppSettings {
         }
     }
     
+    var blueColorThemeIsEnabled: Bool {
+        get {
+            value(for: blueColorThemeIsEnabledKey) ?? false // defaults to `false`
+        }
+        set {
+            guard newValue != blueColorThemeIsEnabled else { return }
+            updateDefaults(for: blueColorThemeIsEnabledKey, value: newValue)
+            sendNotification(.blueColorThemeIsEnabledChanged)
+        }
+    }
+    
     // MARK: - Private Properties
     
     private let userDefaults = UserDefaults.standard
     private let healthIntegrationIsEnabledKey = "healthIntegrationIsEnabledKey"
+    private let blueColorThemeIsEnabledKey = "blueColorThemeIsEnabledKey"
 }
 
 
@@ -68,4 +88,5 @@ extension AppSettings {
 
 extension Notification.Name {
     static let healthIntegrationIsEnabledChanged = Notification.Name("healthIntegrationIsEnabledChanged")
+    static let blueColorThemeIsEnabledChanged = Notification.Name("blueColorThemeIsEnabledChanged")
 }
