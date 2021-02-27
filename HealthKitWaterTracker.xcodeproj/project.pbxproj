@@ -28,6 +28,7 @@
 		6364B84025E4C8790043698A /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B83F25E4C8790043698A /* ServerResponse.swift */; };
 		6364B84625E4CC440043698A /* WaterReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B84525E4CC440043698A /* WaterReportViewController.swift */; };
 		6364B84B25E4F7E70043698A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B84A25E4F7E70043698A /* UIColor+Extension.swift */; };
+		6364B84F25E9F9390043698A /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B84E25E9F9390043698A /* SettingsCell.swift */; };
 		6364B85325E9FDBD0043698A /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364B85225E9FDBD0043698A /* SettingModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		6364B83F25E4C8790043698A /* ServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
 		6364B84525E4CC440043698A /* WaterReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterReportViewController.swift; sourceTree = "<group>"; };
 		6364B84A25E4F7E70043698A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		6364B84E25E9F9390043698A /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		6364B85225E9FDBD0043698A /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,7 +158,7 @@
 		6364B82725E4C3EF0043698A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6364B82D25E4C4290043698A /* WaterIntakeTableViewCell.swift */,
+				6364B84D25E9F8D30043698A /* Cells */,
 				6364B83025E4C44B0043698A /* ChartView.swift */,
 			);
 			path = Views;
@@ -187,6 +189,15 @@
 				6364B83F25E4C8790043698A /* ServerResponse.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		6364B84D25E9F8D30043698A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6364B82D25E4C4290043698A /* WaterIntakeTableViewCell.swift */,
+				6364B84E25E9F9390043698A /* SettingsCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,6 +279,7 @@
 				6364B83D25E4C85E0043698A /* Network.swift in Sources */,
 				6364B81125E4C23E0043698A /* WaterIntakeTableViewController.swift in Sources */,
 				6364B82425E4C3D40043698A /* HealthData.swift in Sources */,
+				6364B84F25E9F9390043698A /* SettingsCell.swift in Sources */,
 				6364B82E25E4C4290043698A /* WaterIntakeTableViewCell.swift in Sources */,
 				6364B83125E4C44B0043698A /* ChartView.swift in Sources */,
 				6364B81D25E4C3310043698A /* WaterIntakeChartViewController.swift in Sources */,
