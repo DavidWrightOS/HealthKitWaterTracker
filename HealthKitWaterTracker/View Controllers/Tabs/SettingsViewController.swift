@@ -172,6 +172,7 @@ extension SettingsViewController {
         super.configureColorScheme()
         
         tableView.backgroundColor = .backgroundColor
+        tableView.reloadData()
     }
 }
 
@@ -214,5 +215,28 @@ extension SettingsViewController: UITableViewDelegate {
         case 0: return "Turn on Apple Health Integration to sync water intake data with other apps."
         default: return nil
         }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let header = view as? UITableViewHeaderFooterView {
+            header.textLabel?.textColor = .tableViewHeaderFooterTextColor
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        if let footer = view as? UITableViewHeaderFooterView {
+            footer.textLabel?.textColor = .tableViewHeaderFooterTextColor
+        }
+    }
+}
+
+
+// MARK: - SettingsTracking
+
+extension SettingsViewController: SettingsTracking {
+    func healthIntegrationIsEnabledChanged() {}
+    
+    func blueColorThemeIsEnabledChanged() {
+        configureColorScheme()
     }
 }
