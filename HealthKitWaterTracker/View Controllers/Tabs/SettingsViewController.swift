@@ -153,7 +153,7 @@ extension SettingsViewController {
     
     private func setUpViews() {
         title = tabBarItem.title
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = false
         
         tableView.register(SettingsCell.self, forCellReuseIdentifier: SettingsCell.reuseIdentifier)
         tableView.contentInset.top = 8
