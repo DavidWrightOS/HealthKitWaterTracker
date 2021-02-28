@@ -33,7 +33,7 @@ extension UIColor {
     static var tabBarItemColor: UIColor { waterColorScheme ? .detailTextColor : .systemGray }
     static var tabBarSelectedItemColor: UIColor { .actionColor }
     static var tabBarTintColor: UIColor? { waterColorScheme ? .secondaryBackgroundColor : nil }
-    static var tabBarBackgroundColor: UIColor { waterColorScheme ? .customBlue : .secondarySystemGroupedBackground }
+    static var barBackgroundColor: UIColor { waterColorScheme ? .customBlue : .secondarySystemGroupedBackground }
     
     static var backgroundColor: UIColor { waterColorScheme ? .customBlue : .systemGroupedBackground }
     static var secondaryBackgroundColor: UIColor { waterColorScheme ? .customBlueSecondary : .secondarySystemGroupedBackground }
@@ -61,6 +61,7 @@ extension UIViewController {
         
         navigationController?.navigationBar.barStyle = UIBarStyle.currentTheme
         navigationController?.navigationBar.tintColor = .actionColor
+        navigationController?.navigationBar.barTintColor = .barBackgroundColor
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.textColor]
         navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
         navigationController?.navigationBar.titleTextAttributes = textAttributes
