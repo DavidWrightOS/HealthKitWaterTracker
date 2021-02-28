@@ -27,14 +27,14 @@ class SettingsViewController: UIViewController {
         // Section 0
         [
             SettingModel(displayName: "Apple Health Integration",
-                    getValue: { () in AppSettings.shared.healthIntegrationIsEnabled },
-                    setValue: { (newValue: Bool) in AppSettings.shared.healthIntegrationIsEnabled = newValue })
+                         getValue: { () in AppSettings.shared.healthIntegrationIsEnabled },
+                         setValue: { (newValue: Bool) in AppSettings.shared.healthIntegrationIsEnabled = newValue })
         ],
         // Section 1
         [
             SettingModel(displayName: "Blue Color Theme",
-                    getValue: { () in AppSettings.shared.waterColorScheme },
-                    setValue: { (newValue: Bool) in AppSettings.shared.waterColorScheme = newValue })
+                         getValue: { () in AppSettings.shared.blueColorThemeIsEnabled },
+                         setValue: { (newValue: Bool) in AppSettings.shared.blueColorThemeIsEnabled = newValue })
         ]
     ]
     
