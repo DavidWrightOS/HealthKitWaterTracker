@@ -178,7 +178,7 @@ extension WaterReportViewController {
         
         navigationController?.navigationBar.layoutMargins.left = 20
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Data", style: .done, target: self, action: #selector(didTapRightBarButtonItem))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Data", style: .plain, target: self, action: #selector(didTapRightBarButtonItem))
         title = tabBarItem.title
         
         tableView.register(WaterIntakeTableViewCell.self, forCellReuseIdentifier: WaterIntakeTableViewCell.reuseIdentifier)
