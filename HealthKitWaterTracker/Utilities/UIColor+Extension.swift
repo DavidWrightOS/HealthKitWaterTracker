@@ -15,6 +15,13 @@ extension UIColor {
     private static var customTeal = #colorLiteral(red: 0.1411764706, green: 0.5411764706, blue: 0.6196078431, alpha: 1)
     private static var customWhite = #colorLiteral(red: 0.8470588235, green: 0.8470588235, blue: 0.8470588235, alpha: 1)
     private static var customWhiteSecondary = #colorLiteral(red: 0.5571184754, green: 0.5771605372, blue: 0.619569242, alpha: 1)
+    
+    static var defaultTableViewHeaderFooterTextColor: UIColor {
+        guard #available(iOS 13.0, *) else { return #colorLiteral(red: 0.3838575184, green: 0.4084955156, blue: 0.4210632443, alpha: 1) }
+        return UIColor { traits -> UIColor in
+            return traits.userInterfaceStyle == .light ? #colorLiteral(red: 0.3838575184, green: 0.4084955156, blue: 0.4210632443, alpha: 1) : #colorLiteral(red: 0.3907751143, green: 0.4204127789, blue: 0.4328970909, alpha: 1)
+        }
+    }
 }
 
 
@@ -35,6 +42,7 @@ extension UIColor {
     static var actionColor: UIColor { waterColorScheme ? .customTeal : .systemBlue }
     static var switchOnTintColor: UIColor { waterColorScheme ? .customTeal : .systemGreen }
     static var switchThumbColor: UIColor { waterColorScheme ? customWhite : .white }
+    static var tableViewHeaderFooterTextColor: UIColor { waterColorScheme ? .customWhiteSecondary : .defaultTableViewHeaderFooterTextColor }
 }
 
 
