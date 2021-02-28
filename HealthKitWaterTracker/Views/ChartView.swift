@@ -107,7 +107,7 @@ class ChartView: UIView {
 
 extension ChartView {
     func applyCurrentColorScheme() {
-        if UIColor.waterColorScheme {
+        if AppSettings.shared.blueColorThemeIsEnabled {
             applyAlternateColorStyle()
         } else {
             applyDefaultConfiguration()

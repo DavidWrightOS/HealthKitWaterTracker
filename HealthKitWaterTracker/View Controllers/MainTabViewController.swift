@@ -15,6 +15,7 @@ class MainTabViewController: UITabBarController {
     init() {
         super.init(nibName: nil, bundle: nil)
         
+        registerForBlueColorThemeIsEnabledChanges()
         setUpTabViewController()
         configureColorScheme()
     }
@@ -119,5 +120,16 @@ extension MainTabViewController: UITabBarControllerDelegate {
     
     private func setLastViewedViewControllerIndex(_ index: Int) {
         userDefaults.set(index, forKey: Self.lastViewControllerViewed)
+    }
+}
+
+
+// MARK: - SettingsTracking
+
+extension MainTabViewController: SettingsTracking {
+    func healthIntegrationIsEnabledChanged() {}
+    
+    func blueColorThemeIsEnabledChanged() {
+        configureColorScheme()
     }
 }

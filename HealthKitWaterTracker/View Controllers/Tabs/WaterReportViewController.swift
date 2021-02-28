@@ -50,6 +50,7 @@ class WaterReportViewController: UIViewController {
         super.viewDidLoad()
         
         registerForhealthIntegrationIsEnabledChanges()
+        registerForBlueColorThemeIsEnabledChanges()
         setUpViews()
     }
     
@@ -382,6 +383,10 @@ extension WaterReportViewController: HealthDataTableViewControllerDelegate {
 // MARK: - SettingsTracking
 
 extension WaterReportViewController: SettingsTracking {
+    func blueColorThemeIsEnabledChanged() {
+        configureColorScheme()
+    }
+    
     func healthIntegrationIsEnabledChanged() {
         if AppSettings.shared.healthIntegrationIsEnabled {
             requestAuthorizationAndQueryData()

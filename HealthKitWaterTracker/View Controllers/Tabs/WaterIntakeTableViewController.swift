@@ -57,6 +57,7 @@ class WaterIntakeTableViewController: UITableViewController {
         super.viewDidLoad()
         
         registerForhealthIntegrationIsEnabledChanges()
+        registerForBlueColorThemeIsEnabledChanges()
         setUpViews()
     }
     
@@ -338,6 +339,10 @@ extension WaterIntakeTableViewController {
 // MARK: - SettingsTracking
 
 extension WaterIntakeTableViewController: SettingsTracking {
+    func blueColorThemeIsEnabledChanged() {
+        configureColorScheme()
+    }
+    
     func healthIntegrationIsEnabledChanged() {
         if AppSettings.shared.healthIntegrationIsEnabled {
             requestAuthorizationAndQueryData()

@@ -44,6 +44,8 @@ class SettingsCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         
+        registerForBlueColorThemeIsEnabledChanges()
+        
         selectionStyle = .none
         
         contentView.addSubview(label)
@@ -66,7 +68,7 @@ class SettingsCell: UITableViewCell {
     
     private func configureColorScheme() {
         backgroundColor = .secondaryBackgroundColor
-        textLabel?.textColor = .textColor
+        label.textColor = .textColor
         detailTextLabel?.textColor = .detailTextColor
         
         switchControl.onTintColor = .switchOnTintColor
@@ -86,7 +88,7 @@ class SettingsCell: UITableViewCell {
 extension SettingsCell: SettingsTracking {
     func healthIntegrationIsEnabledChanged() {}
     
-    func waterColorSchemeChanged() {
+    func blueColorThemeIsEnabledChanged() {
         configureColorScheme()
     }
 }

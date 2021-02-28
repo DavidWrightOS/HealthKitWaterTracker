@@ -15,6 +15,8 @@ class WaterIntakeTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
         
+        registerForBlueColorThemeIsEnabledChanges()
+        
         configureColorScheme()
     }
     
@@ -28,4 +30,11 @@ class WaterIntakeTableViewCell: UITableViewCell {
         detailTextLabel?.textColor = .detailTextColor
     }
 }
+
+extension WaterIntakeTableViewCell: SettingsTracking {
+    func healthIntegrationIsEnabledChanged() {}
+    
+    func blueColorThemeIsEnabledChanged() {
+        configureColorScheme()
+    }
 }

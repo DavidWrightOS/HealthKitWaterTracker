@@ -53,6 +53,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        registerForBlueColorThemeIsEnabledChanges()
         setUpViews()
         tableView.reloadData()
         
@@ -165,6 +166,12 @@ extension SettingsViewController {
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
         configureColorScheme()
+    }
+    
+    override func configureColorScheme() {
+        super.configureColorScheme()
+        
+        tableView.backgroundColor = .backgroundColor
     }
 }
 
